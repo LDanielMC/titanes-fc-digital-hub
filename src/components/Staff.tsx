@@ -1,0 +1,66 @@
+import { Card } from "@/components/ui/card";
+import { Users, Dumbbell, ClipboardCheck, Calendar } from "lucide-react";
+
+const staffMembers = [
+  {
+    name: "Emanuel Moctezuma Campuzano",
+    role: "Director Técnico",
+    description: "Especialista en metodologías de entrenamiento",
+    icon: Users,
+  },
+  {
+    name: "Ángel Hurtado Rendón",
+    role: "Preparador Físico",
+    description: "Experto en fuerza, velocidad y prevención de lesiones",
+    icon: Dumbbell,
+  },
+  {
+    name: "Alejandro Saraho Cortez",
+    role: "Auxiliar Técnico",
+    description: "Apoyo en sesiones técnicas y tácticas",
+    icon: ClipboardCheck,
+  },
+  {
+    name: "Yered Carbajal Sadkiel",
+    role: "Coordinador Deportivo",
+    description: "Encargado de organización de horarios, logística y torneos",
+    icon: Calendar,
+  },
+];
+
+const Staff = () => {
+  return (
+    <section className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl md:text-5xl font-black text-primary text-center mb-16">
+          Nuestro Staff Profesional
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {staffMembers.map((member, index) => {
+            const IconComponent = member.icon;
+            return (
+              <Card 
+                key={index} 
+                className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-accent bg-card"
+              >
+                <div className="flex flex-col items-center text-center space-y-4">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+                    <IconComponent className="w-10 h-10 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg text-primary mb-1">{member.name}</h3>
+                    <p className="text-accent font-semibold text-sm mb-2">{member.role}</p>
+                    <p className="text-sm text-muted-foreground">{member.description}</p>
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Staff;
