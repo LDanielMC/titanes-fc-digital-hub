@@ -1,88 +1,63 @@
-import { Button } from "@/components/ui/button";
-import { Facebook, Instagram, MessageCircle, Phone } from "lucide-react";
-import titanesLogo from "@/assets/titanes-logo.png";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 
 const Contact = () => {
-  const whatsappNumber = "7771208631";
-  const whatsappMessage = encodeURIComponent("Hola, me gustaría obtener más información sobre TITANES FC");
-
   return (
-    <section className="py-20 bg-primary text-accent">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
-          {/* Logo */}
-          <div className="flex justify-center">
-            <img 
-              src={titanesLogo} 
-              alt="Titanes FC" 
-              className="w-32 h-32 object-contain opacity-90"
-            />
-          </div>
-
-          <div>
-            <h2 className="text-4xl md:text-5xl font-black mb-6">
-              ¡Únete a los Titanes!
-            </h2>
-            <p className="text-xl text-accent/80 mb-8">
-              Contáctanos hoy mismo y comienza tu camino al éxito deportivo
-            </p>
-          </div>
-
-          {/* WhatsApp CTA */}
-          <div className="flex justify-center">
-            <Button 
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-primary font-bold text-lg px-12 py-6 rounded-full shadow-2xl hover:shadow-accent/50 transition-all duration-300 hover:scale-105 flex items-center gap-3"
-              onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank')}
-            >
-              <MessageCircle className="w-6 h-6" />
-              Contáctanos por WhatsApp
-            </Button>
-          </div>
-
-          {/* Contact Info */}
-          <div className="flex justify-center items-center gap-2 text-accent/90">
-            <Phone className="w-5 h-5" />
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-primary mb-4">
+            Redes sociales y contacto
+          </h2>
+          <p className="text-muted-foreground mb-12">
+            Síguenos y contáctanos por tu medio favorito
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a 
-              href={`tel:${whatsappNumber}`}
-              className="text-lg font-semibold hover:text-accent transition-colors"
+              href="https://www.facebook.com/profile.php?id=61569941297858" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center gap-4 p-8 rounded-2xl border-2 border-border hover:border-accent transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group bg-card"
             >
-              777 120 8631
+              <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-all duration-300 group-hover:scale-110">
+                <Facebook className="w-10 h-10 text-accent" />
+              </div>
+              <div>
+                <p className="font-bold text-lg text-primary mb-1">Facebook</p>
+                <p className="text-sm text-muted-foreground">Titanes FC</p>
+              </div>
             </a>
-          </div>
 
-          {/* Social Media */}
-          <div>
-            <p className="text-lg font-semibold mb-6">Síguenos en redes sociales</p>
-            <div className="flex justify-center gap-6">
-              <a 
-                href="https://www.facebook.com/profile.php?id=61569941297858" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-14 h-14 rounded-full bg-accent/10 hover:bg-accent/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-              >
-                <Facebook className="w-7 h-7 text-accent group-hover:scale-110 transition-transform" />
-              </a>
-              <a 
-                href="https://www.instagram.com/titanes.fc01/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-14 h-14 rounded-full bg-accent/10 hover:bg-accent/20 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-              >
-                <Instagram className="w-7 h-7 text-accent group-hover:scale-110 transition-transform" />
-              </a>
-            </div>
-            <div className="mt-4 space-y-1">
-              <p className="text-accent/70 text-sm">Facebook: Titanes FC</p>
-              <p className="text-accent/70 text-sm">Instagram: @titanes.fc01</p>
-            </div>
-          </div>
+            <a 
+              href="https://www.instagram.com/titanes.fc01/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center gap-4 p-8 rounded-2xl border-2 border-border hover:border-accent transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group bg-card"
+            >
+              <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-all duration-300 group-hover:scale-110">
+                <Instagram className="w-10 h-10 text-accent" />
+              </div>
+              <div>
+                <p className="font-bold text-lg text-primary mb-1">Instagram</p>
+                <p className="text-sm text-muted-foreground">@titanes.fc01</p>
+              </div>
+            </a>
 
-          {/* Footer */}
-          <div className="pt-12 border-t border-accent/20">
-            <p className="text-accent/60 text-sm">
-              © 2025 Titanes FC. Todos los derechos reservados.
-            </p>
+            <a 
+              href="https://wa.me/5217771208631" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center gap-4 p-8 rounded-2xl border-2 border-accent bg-gradient-to-br from-accent/5 to-accent/10 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group"
+            >
+              <div className="w-20 h-20 rounded-full bg-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <MessageCircle className="w-10 h-10 text-primary" />
+              </div>
+              <div>
+                <p className="font-bold text-lg text-primary mb-1">WhatsApp</p>
+                <p className="text-base text-accent font-bold">777 120 8631</p>
+                <p className="text-xs text-muted-foreground mt-1">Enviar mensaje</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
