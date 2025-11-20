@@ -32,9 +32,12 @@ const Staff = () => {
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-black text-primary text-center mb-16">
-          Nuestro Staff Profesional
+        <h2 className="text-4xl md:text-5xl font-black text-primary text-center mb-4">
+          Nuestro equipo
         </h2>
+        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          Profesionales comprometidos con tu desarrollo
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {staffMembers.map((member, index) => {
@@ -42,16 +45,17 @@ const Staff = () => {
             return (
               <Card 
                 key={index} 
-                className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-accent bg-card"
+                className="p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-accent bg-card group"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <IconComponent className="w-10 h-10 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg text-primary mb-1">{member.name}</h3>
-                    <p className="text-accent font-semibold text-sm mb-2">{member.role}</p>
-                    <p className="text-sm text-muted-foreground">{member.description}</p>
+                    <h3 className="font-bold text-base text-primary mb-1">{member.name}</h3>
+                    <p className="text-accent font-semibold text-sm mb-3">{member.role}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">"{member.description}"</p>
                   </div>
                 </div>
               </Card>
