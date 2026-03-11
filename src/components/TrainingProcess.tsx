@@ -1,4 +1,5 @@
 import { ClipboardCheck, Users, Dumbbell, TrendingUp } from "lucide-react";
+import { ScrollAnimation } from "./ScrollAnimation";
 
 const steps = [
   {
@@ -30,41 +31,43 @@ const TrainingProcess = () => {
       <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent/20 to-transparent hidden lg:block"></div>
       
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-black text-primary text-center mb-4">
-          Cómo entrenamos
-        </h2>
-        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-          Un proceso diseñado para resultados reales
-        </p>
-        
+        <ScrollAnimation className="text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-primary mb-4">
+            Cómo entrenamos
+          </h2>
+          <p className="text-muted-foreground mb-16 max-w-2xl mx-auto">
+            Un proceso diseñado para resultados reales
+          </p>
+        </ScrollAnimation>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto relative">
           {steps.map((step, index) => {
             const IconComponent = step.icon;
             return (
-              <div 
+              <ScrollAnimation
                 key={index}
-                className="relative"
-                style={{ animationDelay: `${index * 150}ms` }}
+                delay={`${index * 150}ms`}
+                className="relative h-full"
               >
-                <div className="bg-card p-6 rounded-2xl border-2 border-border hover:border-accent transition-all duration-300 hover:shadow-lg relative z-10">
+                <div className="bg-card p-6 rounded-2xl border-2 border-border hover:border-accent transition-all duration-300 hover:shadow-lg relative z-10 h-full">
                   {/* Step number */}
                   <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-accent flex items-center justify-center text-primary font-black text-lg shadow-lg">
                     {index + 1}
                   </div>
-                  
+
                   <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4 mt-4">
                     <IconComponent className="w-8 h-8 text-accent" />
                   </div>
-                  
+
                   <h3 className="font-bold text-lg text-primary mb-2">{step.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
                 </div>
-                
+
                 {/* Connection line (desktop only) */}
                 {index < steps.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-accent/30 z-0"></div>
                 )}
-              </div>
+              </ScrollAnimation>
             );
           })}
         </div>

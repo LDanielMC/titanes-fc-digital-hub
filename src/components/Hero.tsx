@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import titanesLogo from "@/assets/titanes-logo.png";
+import titanesLogo from "@/assets/titanes-logo.svg";
 import { Award, Users, Calendar } from "lucide-react";
 
 const Hero = () => {
@@ -54,20 +54,34 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button 
-              size="lg" 
-              className="bg-accent hover:bg-accent/90 text-primary font-bold text-base md:text-lg px-10 py-6 rounded-full shadow-2xl hover:shadow-accent/50 transition-all duration-300 hover:scale-105"
+
+            {/* <a 
+              href="https://wa.me/7771208631?text=Hola%20me%20interesa%20inscribirme%20a%20Titanes%20FC" 
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Inscríbete ahora
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-2 border-accent text-accent hover:bg-accent hover:text-primary font-bold text-base md:text-lg px-10 py-6 rounded-full transition-all duration-300 hover:scale-105"
+              <Button 
+                size="lg"
+                className="bg-accent hover:bg-accent/90 text-primary font-bold text-base md:text-lg px-10 py-6 rounded-full shadow-2xl hover:shadow-accent/50 transition-all duration-300 hover:scale-105"
+              >
+                Inscríbete ahora
+              </Button>
+            </a> */}
+
+            <a 
+              href="#contact"
             >
-              Quiero más información
-            </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-2 border-accent text-accent hover:bg-accent hover:text-primary font-bold text-base md:text-lg px-10 py-6 rounded-full transition-all duration-300 hover:scale-105"
+              >
+                Quiero más información
+              </Button>
+            </a>
+
           </div>
+
         </div>
       </div>
     </section>
