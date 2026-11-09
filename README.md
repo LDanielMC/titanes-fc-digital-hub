@@ -1,73 +1,80 @@
-# Welcome to your Lovable project
+# Titanes FC — hub digital
 
-## Project info
+Sitio web de un equipo de fútbol formativo: presenta su metodología de entrenamiento, su cuerpo técnico, los horarios, los planes de precio y su marco legal, y permite que familias y jugadores lo contacten por formulario o WhatsApp. Está dirigido a padres de niños, jóvenes y adultos que buscan dónde entrenar (categorías infantil, juvenil, libre y femenil).
 
-**URL**: https://lovable.dev/projects/dd710f30-7388-4ce3-a77b-b5227b9ad713
+## Funcionalidades principales
 
-## How can I edit this code?
+- **Página principal de una sola vista** con portada, proceso de entrenamiento, cuerpo técnico, objetivo, uniforme, misión y visión, características del programa, valores, planes, horarios, contacto y llamada a la acción final.
+- **Planes de precio** con botones para apartar lugar por WhatsApp.
+- **Formulario de contacto** validado (nombre, correo y mensaje) que envía el mensaje por correo con EmailJS, con estados de carga y avisos de éxito o error.
+- **Página de marco legal** (`/marco-legal`) con el documento institucional del centro de formación.
+- **Botones de WhatsApp** en la portada, los planes, la llamada final y el pie.
+- **Animaciones de entrada** al hacer scroll.
+- **Diseño responsivo** con componentes shadcn/ui.
 
-There are several ways of editing your application.
+## Capturas
 
-**Use Lovable**
+<!-- Agrega aquí tus imágenes, por ejemplo: ![Portada](docs/capturas/portada.png) -->
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/dd710f30-7388-4ce3-a77b-b5227b9ad713) and start prompting.
+_Pendiente._
 
-Changes made via Lovable will be committed automatically to this repo.
+## Stack
 
-**Use your preferred IDE**
+| Capa | Tecnología |
+|---|---|
+| Framework | React 18.3, TypeScript 5.8, React Router 6.30 |
+| Build | Vite 5.4 con `@vitejs/plugin-react-swc` |
+| Estilos y UI | Tailwind CSS 3.4, shadcn/ui (Radix UI), Lucide |
+| Formularios | React Hook Form y Zod |
+| Correo | EmailJS (`@emailjs/browser` 4) |
+| Hosting | Firebase Hosting |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Arquitectura
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Aplicación de una sola página (SPA) sin backend propio:
 
-Follow these steps:
+- `src/App.tsx` define dos rutas: `/` (`src/pages/Index.tsx`) y `/marco-legal`.
+- `src/pages/Index.tsx` compone la página con una sección por componente en `src/components/` (`Hero`, `TrainingProcess`, `Staff`, `About`, `Uniform`, `Mission`, `Features`, `ValuesAndCommitments`, `Pricing`, `Schedule`, `Contact`, `FinalCTA` y `Footer`). El componente `TargetAudience` existe pero está desactivado.
+- `src/components/ScrollAnimation.tsx` anima la entrada de las secciones con `react-intersection-observer`.
+- `src/components/ui/` contiene los componentes base de shadcn/ui.
+- `firebase.json` publica la carpeta `dist` y redirige todas las rutas a `index.html`.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Instalación y ejecución
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Requisitos: Node.js 18 o superior y npm.
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+git clone https://github.com/LDanielMC/titanes-fc-digital-hub.git
+cd titanes-fc-digital-hub
+npm install
+# crea un archivo .env con las variables de la tabla siguiente
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Variables de entorno
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| Variable | Uso |
+|---|---|
+| `VITE_EMAILJS_SERVICE_ID` | Servicio de EmailJS que envía el formulario de contacto |
+| `VITE_EMAILJS_TEMPLATE_ID` | Plantilla del correo |
+| `VITE_EMAILJS_PUBLIC_KEY` | Clave pública de EmailJS (se incluye en el bundle del navegador por diseño) |
 
-**Use GitHub Codespaces**
+Sin estas variables el formulario de contacto no puede enviar mensajes.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+| Comando | Qué hace |
+|---|---|
+| `npm run dev` | Servidor de desarrollo con recarga en caliente |
+| `npm run build` | Compila para producción en `dist/` |
+| `npm run preview` | Sirve la compilación para revisarla |
+| `npm run lint` | Revisa el código con ESLint |
 
-## What technologies are used for this project?
+### Despliegue
 
-This project is built with:
+```bash
+npm run build
+firebase deploy --only hosting
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Pruebas
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/dd710f30-7388-4ce3-a77b-b5227b9ad713) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+El proyecto no incluye pruebas automatizadas; la calidad del código se revisa con `npm run lint`.

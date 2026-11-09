@@ -25,3 +25,8 @@ dist-ssr
 
 # Firebase CLI cache
 .firebase/
+
+# Variables de entorno (claves de EmailJS)
+.env
+.env.*
+!.env.example
